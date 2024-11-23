@@ -16,12 +16,20 @@ Stop rebuilding a terminal environment across different hosts.
  - tmux-mighty-scroll
  - tmux-powerline
 #### Installation
-[On WSL, we need to have a nerd font chosen as well for the terminal.](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/0xProto.zip) <br>
-Use: 0xProtoNerdFontMono-Regular.ttf
+We may need to download and install a custom font to display icons. This seems to happen with `gnome-terminal` and `Windows subsystem for Linux (WSL)` <p>
+[Download](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/0xProto.zip) <br>
+##### Ubuntu /w gnome-terminal
+  1. Unzip and copy to ~/.fonts
+  2. `fc-cache -fv` to rebuild the font fc-cache
+  3. Restart your session if you still cannot find the 0xProto Nerd Font.
+##### Windows 11
+Standard windows behavior, unzip the fonts and double click on a font to install.<p>
+I recommend `0xProtoNerdFont-Regular.ttf`
 #### Configuration
-Grab 'applyConfig.sh' and run.
+Clone the repository and run the configuration script.
 ```bash
-chmod +x applyConfig.sh && ./applyConfig.sh
+git clone https://github.com/professorwear/tmux-config.git ~/proj/tmux-config
+chmod +x ~/proj/tmux-config/applyConfig.sh && ~/proj/tmux-config/applyConfig.sh
 ```
 #### Running nvim
 Run `:MasonInstallAll` command after lazy.nvim finishes downloading plugins on first run.
