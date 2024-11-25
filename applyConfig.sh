@@ -8,7 +8,7 @@ echo ""
 sleep 5
 fi
 
-sudo apt install tmux xsel gcc -y
+sudo apt install tmux xsel gcc npm unzip -y
 # We need to grab nvim from outside of the normal package repo due to the stable branch not having 0.10.0
 # This is a quick and dirty, no error handling nor file/folder checks
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.gz
@@ -108,12 +108,26 @@ EOF
 
 if ! [ -f ~/.bash_aliases ]; then
 cat <<EOF > ~/.bash_aliases
+# Password agent enablement
+alias ssh='ssh.exe'
+alias ssh-add='ssh-add.exe'
+
 alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"
+alias vim="nvim"
 EOF
 else
-echo "I don't want to destroy your .bash_aliases file, sorry"
-exit 1
+echo "Previous .bash_aliases file moved to .bash_aliases-$timeStamp.old"
+mv ~/.bash_aliases ~/.bash_aliases-$timeStamp.old
+cat <<EOF > ~/.bash_aliases
+# Password agent enablement
+alias ssh='ssh.exe'
+alias ssh-add='ssh-add.exe'
+
+alias pbcopy="xsel --clipboard --input"
+alias pbpaste="xsel --clipboard --output"
+alias vim="nvim"
+EOF
 fi
 
 source ~/.tmux/plugins/tpm/bin/install_plugins
