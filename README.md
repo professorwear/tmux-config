@@ -1,6 +1,6 @@
 # tmux-config
 ## Description
-Stop rebuilding a terminal environment across different hosts.
+Standardized tmux configuration
 ## Installation and Configuration
 ### Ubuntu Distributions
 ### Plugins
