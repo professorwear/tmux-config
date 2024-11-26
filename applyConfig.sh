@@ -116,25 +116,27 @@ source ~/.tmux/plugins/tpm/bin/install_plugins
 
 if ! [ -f ~/.bash_aliases ]; then
 cat <<EOF > ~/.bash_aliases
-# Password agent enablement
-alias ssh='ssh.exe'
-alias ssh-add='ssh-add.exe'
-
 alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"
 alias vim="nvim"
+
+# Password agent enablement
+#alias ssh='ssh.exe'
+#alias ssh-add='ssh-add.exe'
+
 EOF
 else
 echo "Previous .bash_aliases file moved to .bash_aliases-$timeStamp.old"
 mv ~/.bash_aliases ~/.bash_aliases-$timeStamp.old
 cat <<EOF > ~/.bash_aliases
-# Password agent enablement
-alias ssh='ssh.exe'
-alias ssh-add='ssh-add.exe'
-
 alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"
 alias vim="nvim"
+
+# Password agent enablement for WSL
+#alias ssh='ssh.exe'
+#alias ssh-add='ssh-add.exe'
+
 EOF
 fi
 
