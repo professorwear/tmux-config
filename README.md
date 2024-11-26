@@ -1,6 +1,6 @@
 # tmux-config
 ## Description
-Stop rebuilding a terminal environment across different hosts.
+Standardized tmux configuration
 ## Installation and Configuration
 ### Ubuntu Distributions
 ### Plugins
@@ -10,6 +10,7 @@ Stop rebuilding a terminal environment across different hosts.
  - catppuccin/tmux
  - tmux-plugins/tmux-cpu
  - tmux-plugins/tmux-battery
+ - tmux-plugins/tmux-yank
  - tmux-plugins/tmux-resurrect
  - tmux-plugins/tmux-continuum
 #### To be explored at a later date
@@ -28,8 +29,8 @@ I recommend `0xProtoNerdFont-Regular.ttf`
 #### Configuration
 Clone the repository and run the configuration script.
 ```bash
-git clone https://github.com/professorwear/tmux-config.git ~/proj/tmux-config
-chmod +x ~/proj/tmux-config/applyConfig.sh && ~/proj/tmux-config/applyConfig.sh
+git clone https://github.com/professorwear/tmux-config.git ~/project/tmux-config
+chmod +x ~/project/tmux-config/applyConfig.sh && ~/project/tmux-config/applyConfig.sh
 ```
 #### Running nvim
 Run `:MasonInstallAll` command after lazy.nvim finishes downloading plugins on first run.

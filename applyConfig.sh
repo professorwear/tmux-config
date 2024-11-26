@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ -f /proc/sys/fs/binfmt_misc/WSLInterop ]; then
 echo "You are running in Windows Subsystem for Linux, you will need a nerdfont pack to correctly display status bar icons."
 echo "Howto on this to come later, or just bug me now about it"
@@ -29,6 +30,7 @@ set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'catppuccin/tmux' # Custom colors 
 set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @plugin 'tmux-plugins/tmux-battery'
+set -g @plugin 'tmux-plugins/tmux-yank' # Copy text to system clipboard
 set -g @plugin 'tmux-plugins/tmux-resurrect' # Restore tmux environment after system restart
 set -g @plugin 'tmux-plugins/tmux-continuum' # Automates tmux-resurrect to save every 1m
 
@@ -70,6 +72,10 @@ echo "You already have a tmux config file"
 exit 1
 fi
 
+if [ -d ~/.tmux/plugins/tpm ]; then
+rm -fr ~/.tmux/plugins/tpm
+fi
+
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 if ! [ -d ~/.config/nvim ]; then
@@ -106,29 +112,32 @@ return {
 }
 EOF
 
+source ~/.tmux/plugins/tpm/bin/install_plugins
+
 if ! [ -f ~/.bash_aliases ]; then
 cat <<EOF > ~/.bash_aliases
-# Password agent enablement
-alias ssh='ssh.exe'
-alias ssh-add='ssh-add.exe'
-
 alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"
 alias vim="nvim"
+
+# Password agent enablement
+#alias ssh='ssh.exe'
+#alias ssh-add='ssh-add.exe'
+
 EOF
 else
 echo "Previous .bash_aliases file moved to .bash_aliases-$timeStamp.old"
 mv ~/.bash_aliases ~/.bash_aliases-$timeStamp.old
 cat <<EOF > ~/.bash_aliases
-# Password agent enablement
-alias ssh='ssh.exe'
-alias ssh-add='ssh-add.exe'
-
 alias pbcopy="xsel --clipboard --input"
 alias pbpaste="xsel --clipboard --output"
 alias vim="nvim"
+
+# Password agent enablement for WSL
+#alias ssh='ssh.exe'
+#alias ssh-add='ssh-add.exe'
+
 EOF
 fi
 
-source ~/.tmux/plugins/tpm/bin/install_plugins
 tmux
