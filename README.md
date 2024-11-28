@@ -34,6 +34,8 @@ chmod +x ~/project/tmux-config/applyConfig.sh && ~/project/tmux-config/applyConf
 ```
 #### Running nvim
 Run `:MasonInstallAll` command after lazy.nvim finishes downloading plugins on first run.
+# Additional information
+To use normal expected X11 mouse copy&paste clipboard selection, you will need to hold down the 'shift' key.
 ## Additonal resources
  - [Fireship's Tmux in 100 Seconds](https://www.youtube.com/watch?v=vtB1J_zCv8I)
  - [Dreams of Code Tmux has forever changed the way I write code.](https://www.youtube.com/watch?v=DzNmUNvnB04)
